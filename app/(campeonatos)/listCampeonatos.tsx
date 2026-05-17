@@ -1,14 +1,36 @@
 import {
-    FlatList,
-    Image,
-    StyleSheet,
-    Text,
-    View
+  FlatList,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View
 } from "react-native";
+
+import { Ionicons } from "@expo/vector-icons";
+
+import { useRouter } from "expo-router";
+
+import { useNavigation } from "@react-navigation/native";
+
+import { EmptyState } from "../../components/emptyState";
+import { LoadingView } from "../../components/loadingView";
 
 import { useCampeonatos } from "@/domain/presentation/hook/useCampeonatos";
 
+import {
+  COLORS,
+  FONTS,
+  globalStyles,
+  RADIUS,
+  SPACING
+} from "../../styles/globalStyles";
+
 export default function ListCampeonatos() {
+
+  const router = useRouter();
+
+  const navigation = useNavigation();
 
   const {
     campeonatos,
@@ -18,9 +40,9 @@ export default function ListCampeonatos() {
 
   if (isLoading) {
     return (
-      <View style={styles.center}>
-        <Text>Cargando campeonatos...</Text>
-      </View>
+      <LoadingView
+        message="Cargando campeonatos..."
+      />
     );
   }
 
@@ -33,52 +55,207 @@ export default function ListCampeonatos() {
   }
 
   return (
-    <FlatList
-      data={campeonatos}
-      keyExtractor={(item) =>
-        item.id.toString()
-      }
 
-      renderItem={({ item }) => (
+    <View style={globalStyles.screen}>
 
-        <View style={styles.card}>
+      {/* HEADER */}
 
-          <Image
-            source={{
-              uri: item.imagen
-            }}
-            style={styles.image}
-          />
+      <View style={styles.header}>
 
-          <Text style={styles.year}>
-            Mundial {item.anio}
-          </Text>
+        <View style={styles.headerTop}>
 
-          <Text style={styles.text}>
-            ⚽ Goleador:
-            {" "}
-            {item.goleador}
-          </Text>
+          <TouchableOpacity
+            style={styles.backButton}
+            onPress={() => navigation.goBack()}
+          >
 
-          <Text style={styles.text}>
-            🌎 País:
-            {" "}
-            {item.golePais}
-          </Text>
+            <Ionicons
+              name="arrow-back"
+              size={22}
+              color="#fff"
+            />
 
-          <Text style={styles.text}>
-            🥅 Goles:
-            {" "}
-            {item.numeroGoles}
-          </Text>
+          </TouchableOpacity>
+
+          <View>
+
+            <Text style={styles.headerTitle}>
+              Campeonatos Mundiales
+            </Text>
+
+            <Text style={styles.headerSubtitle}>
+              {campeonatos.length} campeonatos registrados
+            </Text>
+
+          </View>
 
         </View>
-      )}
 
-      contentContainerStyle={{
-        padding: 16
-      }}
-    />
+      </View>
+
+      <FlatList
+
+        data={campeonatos}
+
+        keyExtractor={(item) =>
+          item.id.toString()
+        }
+
+        contentContainerStyle={styles.list}
+
+        ListEmptyComponent={
+          <EmptyState
+            icon="football-outline"
+            title="Sin campeonatos"
+            subtitle="No existen campeonatos registrados"
+          />
+        }
+
+        renderItem={({ item }) => (
+
+          <TouchableOpacity
+
+            activeOpacity={0.9}
+
+            style={styles.card}
+
+            onPress={() =>
+              router.push({
+                pathname: "/(integrantes)/listIntegrantes",
+                params: {
+                  campeonatoId: item.id,
+                  anio: item.anio
+                }
+              })
+            }
+          >
+
+            <Image
+              source={{
+                uri: item.imagen
+              }}
+              style={styles.image}
+              resizeMode="contain"
+            />
+
+            <View style={styles.cardBody}>
+
+              <Text style={styles.year}>
+                Mundial {item.anio}
+              </Text>
+
+              <View style={styles.infoRow}>
+
+                <Ionicons
+                  name="football"
+                  size={18}
+                  color={COLORS.primary}
+                />
+
+                <Text style={styles.text}>
+                  {item.goleador}
+                </Text>
+
+              </View>
+
+              <View style={styles.infoRow}>
+
+                <Ionicons
+                  name="earth"
+                  size={18}
+                  color={COLORS.success}
+                />
+
+                <Text style={styles.text}>
+                  {item.golePais}
+                </Text>
+
+              </View>
+
+              <View style={styles.infoRow}>
+
+                <Ionicons
+                  name="trophy"
+                  size={18}
+                  color={COLORS.accent}
+                />
+
+                <Text style={styles.text}>
+                  {item.numeroGoles} goles
+                </Text>
+
+              </View>
+
+            </View>
+
+            <View style={styles.actions}>
+
+              <TouchableOpacity
+
+                style={styles.editBtn}
+
+                onPress={() =>
+
+                  router.push({
+
+                    pathname:
+                      "/(campeonatos)/editCampeonato",
+
+                    params: {
+
+                      id: item.id,
+
+                      anio: item.anio,
+
+                      goleador: item.goleador,
+
+                      pais: item.golePais,
+
+                      goles: item.numeroGoles,
+
+                      imagen: item.imagen
+                    }
+                  })
+                }
+              >
+
+                <Ionicons
+                  name="create-outline"
+                  size={20}
+                  color={COLORS.primary}
+                />
+
+              </TouchableOpacity>
+
+            </View>
+
+          </TouchableOpacity>
+        )}
+      />
+
+      <TouchableOpacity
+
+        style={styles.fab}
+
+        activeOpacity={0.85}
+
+        onPress={() =>
+
+          router.push(
+            "/(campeonatos)/editCampeonato"
+          )
+        }
+      >
+
+        <Ionicons
+          name="add"
+          size={28}
+          color="#fff"
+        />
+
+      </TouchableOpacity>
+
+    </View>
   );
 }
 
@@ -90,39 +267,137 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
 
-  card: {
-    backgroundColor: "#ffffff",
-    borderRadius: 16,
-    padding: 16,
-    marginBottom: 16,
+  header: {
+    backgroundColor: COLORS.primaryDark,
+    paddingHorizontal: SPACING.md,
+    paddingVertical: SPACING.md,
+  },
 
-    shadowColor: "#000",
+  headerTop: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 12
+  },
+
+  backButton: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+
+    justifyContent: "center",
+    alignItems: "center",
+
+    backgroundColor: "rgba(255,255,255,0.15)"
+  },
+
+  headerTitle: {
+    fontSize: 22,
+    fontWeight: FONTS.bold,
+    color: "#fff",
+    marginBottom: 4
+  },
+
+  headerSubtitle: {
+    fontSize: 14,
+    color: "#CBD5E1"
+  },
+
+  list: {
+    padding: SPACING.md,
+    paddingBottom: 100
+  },
+
+  card: {
+    backgroundColor: COLORS.surface,
+    borderRadius: RADIUS.lg,
+    overflow: "hidden",
+
+    marginBottom: SPACING.md,
+
+    shadowColor: COLORS.shadow,
     shadowOffset: {
       width: 0,
       height: 2
     },
 
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
+    shadowOpacity: 0.08,
+    shadowRadius: 6,
 
-    elevation: 4
+    elevation: 3
   },
 
   image: {
     width: "100%",
     height: 220,
-    borderRadius: 12,
-    marginBottom: 12
+  },
+
+  cardBody: {
+    padding: SPACING.md
   },
 
   year: {
     fontSize: 22,
-    fontWeight: "bold",
+    fontWeight: FONTS.bold,
+    color: COLORS.textPrimary,
+    marginBottom: SPACING.sm
+  },
+
+  infoRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
     marginBottom: 8
   },
 
   text: {
-    fontSize: 16,
-    marginBottom: 4
+    fontSize: 15,
+    color: COLORS.textSecondary,
+    fontWeight: FONTS.medium
+  },
+
+  actions: {
+    flexDirection: "row",
+    justifyContent: "flex-end",
+    paddingHorizontal: SPACING.md,
+    paddingBottom: SPACING.md
+  },
+
+  editBtn: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+
+    justifyContent: "center",
+    alignItems: "center",
+
+    backgroundColor: COLORS.primaryLight
+  },
+
+  fab: {
+    position: "absolute",
+
+    right: 24,
+    bottom: 24,
+
+    width: 60,
+    height: 60,
+
+    borderRadius: 30,
+
+    justifyContent: "center",
+    alignItems: "center",
+
+    backgroundColor: COLORS.primary,
+
+    shadowColor: COLORS.primary,
+    shadowOffset: {
+      width: 0,
+      height: 4
+    },
+
+    shadowOpacity: 0.3,
+    shadowRadius: 6,
+
+    elevation: 6
   }
 });
