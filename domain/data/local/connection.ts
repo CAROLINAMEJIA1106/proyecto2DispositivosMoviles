@@ -11,21 +11,21 @@ export async function initDatabase(): Promise<void> {
   const sqliteDir = new Directory(Paths.document, 'SQLite');
   const dbFile = new File(sqliteDir, dbName);
 
-  console.log('📁 sqliteDir:', sqliteDir.uri);
-  console.log('📁 dbFile:', dbFile.uri);
+  console.log(' sqliteDir:', sqliteDir.uri);
+  console.log(' dbFile:', dbFile.uri);
 
   if (!dbFile.exists) {
     
     if (!sqliteDir.exists) {
       sqliteDir.create();
-      console.log('📁 Directorio creado');
+      console.log(' Directorio creado');
     }
 
 
     const asset = Asset.fromModule(require('../../../assets/cam_mundial.db'));
     await asset.downloadAsync();
 
-    console.log('📦 asset.localUri:', asset.localUri);
+    console.log(' asset.localUri:', asset.localUri);
 
     if (!asset.localUri) {
       throw new Error('No se pudo cargar el asset de la base de datos');
@@ -41,7 +41,7 @@ export async function initDatabase(): Promise<void> {
 
   
   db = openDatabaseSync(dbName);
-  console.log('✅ DB abierta');
+  console.log(' DB abierta');
 }
 
 export function checkConnection(): boolean {
