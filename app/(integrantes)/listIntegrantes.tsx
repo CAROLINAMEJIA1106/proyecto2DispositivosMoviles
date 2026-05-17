@@ -2,19 +2,19 @@ import { Ionicons } from '@expo/vector-icons';
 import { useFocusEffect, useLocalSearchParams, useRouter } from 'expo-router';
 import React, { useCallback, useState } from 'react';
 import {
-    Alert,
-    FlatList,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  Alert,
+  FlatList,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from 'react-native';
 import { EmptyState } from '../../components/emptyState';
 import { LoadingView } from '../../components/loadingView';
 import { IntegranteModel } from '../../domain/model/integranteModel';
 import {
-    useDeleteIntegrante,
-    useIntegrantes
+  useDeleteIntegrante,
+  useIntegrantes
 } from '../../domain/presentation/hook/index';
 import { COLORS, FONTS, RADIUS, SPACING, globalStyles } from '../../styles/globalStyles';
 
@@ -78,7 +78,7 @@ export default function ListIntegrantes() {
         style={styles.editBtn}
         onPress={() =>
           router.push({
-            pathname: '/integrantes/editIntegrante',
+            pathname: '/(integrantes)/editIntegrante',
             params: { id: item.int_id, campeonatoId: caId },
           })
         }
@@ -146,7 +146,7 @@ export default function ListIntegrantes() {
           style={styles.fab}
           onPress={() =>
             router.push({
-              pathname: '/integrantes/editIntegrante',
+              pathname: '/(integrantes)/editIntegrante',
               params: { campeonatoId: caId },
             })
           }
