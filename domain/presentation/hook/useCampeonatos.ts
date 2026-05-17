@@ -1,4 +1,3 @@
-import { useSQLiteContext } from "expo-sqlite";
 
 import {
     useCallback,
@@ -15,9 +14,10 @@ import { CampeonatoRepositoryImpl } from "../../data/repository/campeonatoReposi
 
 import { GetCampeonatosUseCase } from "../usecases/getCampeonatosUseCase";
 
-export function useCampeonatos() {
+import { db } from "@/domain/data/local/connection";
 
-  const db = useSQLiteContext();
+export function useCampeonatos() {
+  
 
   const [campeonatos, setCampeonatos]
     = useState<CampeonatoModel[]>([]);
@@ -30,7 +30,7 @@ export function useCampeonatos() {
 
   const campeonatoRepository = useMemo(() => {
     return new CampeonatoRepositoryImpl(db);
-  }, [db]);
+  }, []);
 
   const getCampeonatosUseCase = useMemo(() => {
     return new GetCampeonatosUseCase(
