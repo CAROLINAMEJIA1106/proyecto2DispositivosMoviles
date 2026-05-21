@@ -366,10 +366,8 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 20,
-
     justifyContent: "center",
     alignItems: "center",
-
     backgroundColor: COLORS.primaryLight
   },
 

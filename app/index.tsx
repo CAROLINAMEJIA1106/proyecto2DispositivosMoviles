@@ -4,7 +4,8 @@ export default function Index() {
 
   return (
     <Redirect
-      href="/(campeonatos)/listCampeonatos"
+      //href="/(campeonatos)/listCampeonatos"
+      href="/(paisGanador)/paisGanadorList"
     />
   );
 }
