@@ -1,14 +1,19 @@
-import { Slot } from 'expo-router';
-import { useEffect, useState } from 'react';
+import { Stack } from "expo-router";
+
+import { useEffect, useState } from "react";
 
 import {
   ActivityIndicator,
   View
-} from 'react-native';
+} from "react-native";
+
+import {
+  SafeAreaProvider
+} from "react-native-safe-area-context";
 
 import {
   initDatabase
-} from '../domain/data/local/connection';
+} from "../domain/data/local/connection";
 
 export default function RootLayout() {
 
@@ -21,7 +26,7 @@ export default function RootLayout() {
       .then(() => setDbReady(true))
       .catch((error) =>
         console.error(
-          '❌ Error DB:',
+          "❌ Error DB:",
           error
         )
       );
@@ -33,9 +38,9 @@ export default function RootLayout() {
     return (
       <View
         style={{
-          flex: 1,
-          justifyContent: 'center',
-          alignItems: 'center'
+          flex:1,
+          justifyContent:"center",
+          alignItems:"center"
         }}
       >
         <ActivityIndicator
@@ -46,5 +51,17 @@ export default function RootLayout() {
     );
   }
 
-  return <Slot />;
+  return (
+
+    <SafeAreaProvider>
+
+      <Stack
+        screenOptions={{
+          headerShown:false
+        }}
+      />
+
+    </SafeAreaProvider>
+
+  );
 }

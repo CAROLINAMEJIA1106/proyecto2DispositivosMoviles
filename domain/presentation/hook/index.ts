@@ -132,19 +132,41 @@ export function useCreatePais(onSuccess: () => void) {
 }*/
 
 // ── useIntegrantes ──────────────────────────────────────────────────────────
-export function useIntegrantes(campeonatoId: number) {
-  const [integrantes, setIntegrantes] = useState<IntegranteModel[]>(() =>
-    getIntegrantesByCampeonatoUseCase(campeonatoId)
-  );
-  const [loading, setLoading] = useState(false);
+export function useIntegrantes(
+  campeonatoId?: number
+) {
+
+  const [integrantes, setIntegrantes]
+    = useState<IntegranteModel[]>(() =>
+
+      campeonatoId
+        ? getIntegrantesByCampeonatoUseCase(campeonatoId)
+        : getIntegrantesByCampeonatoUseCase()
+    );
+
+  const [loading, setLoading]
+    = useState(false);
 
   const refresh = useCallback(() => {
+
     setLoading(true);
-    setIntegrantes(getIntegrantesByCampeonatoUseCase(campeonatoId));
+
+    setIntegrantes(
+
+      campeonatoId
+        ? getIntegrantesByCampeonatoUseCase(campeonatoId)
+        : getIntegrantesByCampeonatoUseCase()
+    );
+
     setLoading(false);
+
   }, [campeonatoId]);
 
-  return { integrantes, loading, refresh };
+  return {
+    integrantes,
+    loading,
+    refresh
+  };
 }
 
 // ── useUpdateIntegrante ─────────────────────────────────────────────────────

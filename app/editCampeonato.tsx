@@ -13,30 +13,30 @@
 import React from "react";
 
 import {
-    SafeAreaView,
-    ScrollView,
-    StatusBar,
-    StyleSheet
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  StyleSheet
 } from "react-native";
 
 import {
-    useLocalSearchParams,
-    useRouter
+  useLocalSearchParams,
+  useRouter
 } from "expo-router";
 
 import {
-    CampeonatoForm,
-    CampeonatoFormData
-} from "../../components/campeonatoForm";
+  CampeonatoForm,
+  CampeonatoFormData
+} from "../components/campeonatoForm";
 
 import {
-    COLORS,
-    SPACING
-} from "../../styles/globalStyles";
+  COLORS,
+  SPACING
+} from "../styles/globalStyles";
 
-import { useCreateCampeonato } from "../../domain/presentation/hook/useCreateCampeonato";
+import { useCreateCampeonato } from "../domain/presentation/hook/useCreateCampeonato";
 
-import { useUpdateCampeonato } from "../../domain/presentation/hook/useUpdateCampeonato";
+import { useUpdateCampeonato } from "../domain/presentation/hook/useUpdateCampeonato";
 
 // Pantalla para gestionar la edición
 // y creación de campeonatos
@@ -85,11 +85,8 @@ export default function EditCampeonato() {
 
   const goBack = () => {
 
-    // TODO:
-    // cambiar navegación hacia listPaises
-    // cuando se integre módulo países
+    router.back();
 
-    router.back(); // cambiar navegación hacia listPaises: router.push("/(paises)/listPaises");
   };
 
   const handleSubmit = async (

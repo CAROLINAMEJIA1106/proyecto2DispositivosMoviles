@@ -23,7 +23,7 @@ export default function HomeScreen() {
 
   const handleIngresar = () => {
 
-    router.push("/(tabs)/paises" as any);
+    router.replace("/(tabs)/paisGanadorList" as any);
   };
 
   const handleSalir = () => {

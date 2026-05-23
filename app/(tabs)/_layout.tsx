@@ -26,7 +26,7 @@ export default function TabsLayout() {
       {/* TAB PAISES */}
 
       <Tabs.Screen
-        name="paises"
+        name="paisGanadorList"
 
         options={{
           title: "Países",
@@ -48,7 +48,7 @@ export default function TabsLayout() {
       {/* TAB CAMPEONATOS */}
 
       <Tabs.Screen
-        name="campeonatos"
+        name="listCampeonatos"
 
         options={{
           title: "Campeonatos",
@@ -70,7 +70,7 @@ export default function TabsLayout() {
       {/* TAB INTEGRANTES */}
 
       <Tabs.Screen
-        name="integrantes"
+        name="listIntegrantes"
 
         options={{
           title: "Integrantes",

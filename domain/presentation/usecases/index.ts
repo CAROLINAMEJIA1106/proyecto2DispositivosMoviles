@@ -49,8 +49,21 @@ export function getIntegrantesUseCase(): IntegranteModel[] {
   return new IntegranteRepositoryImpl().getAll();
 }
 
-export function getIntegrantesByCampeonatoUseCase(campeonatoId: number): IntegranteModel[] {
-  return new IntegranteRepositoryImpl().getByCampeonato(campeonatoId);
+export function getIntegrantesByCampeonatoUseCase(
+  campeonatoId?: number
+): IntegranteModel[] {
+
+  const repository =
+    new IntegranteRepositoryImpl();
+
+  if (campeonatoId) {
+
+    return repository.getByCampeonato(
+      campeonatoId
+    );
+  }
+
+  return repository.getAll();
 }
 
 export function createIntegranteUseCase(data: CreateIntegranteModel): IntegranteModel {

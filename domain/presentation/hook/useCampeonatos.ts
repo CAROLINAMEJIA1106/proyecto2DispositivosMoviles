@@ -1,4 +1,3 @@
-
 import {
   useCallback,
   useEffect,
@@ -16,8 +15,7 @@ import { GetCampeonatosUseCase } from "../usecases/getCampeonatosUseCase";
 
 import { db } from "@/domain/data/local/connection";
 
-export function useCampeonatos() {
-  
+export function useCampeonatos(paisId?: number) {
 
   const [campeonatos, setCampeonatos]
     = useState<CampeonatoModel[]>([]);
@@ -29,13 +27,17 @@ export function useCampeonatos() {
     = useState<string | null>(null);
 
   const campeonatoRepository = useMemo(() => {
+
     return new CampeonatoRepositoryImpl(db);
+
   }, []);
 
   const getCampeonatosUseCase = useMemo(() => {
+
     return new GetCampeonatosUseCase(
       campeonatoRepository
     );
+
   }, [campeonatoRepository]);
 
   const loadCampeonatos =
@@ -44,10 +46,13 @@ export function useCampeonatos() {
       try {
 
         setIsLoading(true);
+
         setError(null);
 
         const result =
-          await getCampeonatosUseCase.execute();
+          await getCampeonatosUseCase.execute(
+            paisId
+          );
 
         setCampeonatos(result);
 
@@ -60,24 +65,43 @@ export function useCampeonatos() {
       } finally {
 
         setIsLoading(false);
+
       }
 
-    }, [getCampeonatosUseCase]);
+    }, [
+      getCampeonatosUseCase,
+      paisId
+    ]);
 
   useEffect(() => {
+
     loadCampeonatos();
-  }, [loadCampeonatos]);
+
+  }, [
+    loadCampeonatos
+  ]);
 
   useFocusEffect(
+
     useCallback(() => {
+
       loadCampeonatos();
-    }, [])
+
+    }, [
+      loadCampeonatos
+    ])
+
   );
 
   return {
+
     campeonatos,
+
     isLoading,
+
     error,
+
     reload: loadCampeonatos,
+
   };
 }

@@ -10,14 +10,25 @@ export class GetCampeonatosUseCase {
     CampeonatoRepository
   ) {}
 
-  execute(): Promise<CampeonatoModel[]> {
+  execute(paisId?: number): Promise<CampeonatoModel[]> {
 
     return this.campeonatoRepository
-      .findAll()
-      .then((campeonatos) =>
-        campeonatos.map(
-          CampeonatoMapper.toModel
-        )
+    .findAll()
+    .then((campeonatos) => {
+
+      const filtered =
+        paisId
+
+          ? campeonatos.filter(
+              (campeonato) =>
+                campeonato.caPaId === paisId
+            )
+
+          : campeonatos;
+
+      return filtered.map(
+        CampeonatoMapper.toModel
       );
+    });
   }
 }
