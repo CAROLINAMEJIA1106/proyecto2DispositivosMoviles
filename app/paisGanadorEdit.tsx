@@ -1,24 +1,8 @@
-
-/***************************************************************
- * Nombre: paisGanadorEdit.tsx
- *
- * Descripción:
- * Pantalla encargada de crear y actualizar
- * países ganadores del mundial.
- *
- * Autor: Grupo 3
- *
- * Fecha: 17/05/2026
- ***************************************************************/
-
-
-import React, { useState } from "react";
-
 import {
   useLocalSearchParams,
   useRouter
 } from "expo-router";
-
+import React, { useState } from "react";
 import {
   ActivityIndicator,
   ScrollView,
@@ -30,11 +14,9 @@ import {
 } from "react-native";
 
 import { Ionicons } from "@expo/vector-icons";
-
-import { COLORS, FONTS, RADIUS, SPACING } from "../styles/globalStyles";
-
 import { UseCreatePaisGanador } from "../domain/presentation/hook/useCreatePaisGanador";
 import { UseUpdatePaisGanador } from "../domain/presentation/hook/useUpdatePaisGanador";
+import { COLORS, FONTS, RADIUS, SPACING } from "../styles/globalStyles";
 
 export default function PaisGanadorEdit() {
 
@@ -91,13 +73,9 @@ export default function PaisGanadorEdit() {
     try {
 
       const payload = {
-
         pa_nombre: nombrePais,
-
         pa_num_campeon: Number(numCampeonatos),
-
         pa_bandera: banderaPais,
-
         pa_anios: aniosPais
       };
 
@@ -105,7 +83,10 @@ export default function PaisGanadorEdit() {
 
         await updatePaisGanador({
           pa_id: Number(id),
-          ...payload
+          pa_nombre: payload.pa_nombre,
+          pa_num_campeon: payload.pa_num_campeon,
+          pa_bandera: payload.pa_bandera,
+          pa_anios: payload.pa_anios
         });
 
       } else {
@@ -164,7 +145,7 @@ export default function PaisGanadorEdit() {
           style={styles.input}
           value={nombrePais}
           onChangeText={setNombrePais}
-          placeholder="Ejemplo: Brasil"
+          placeholder="Ejemplo: Kazajistán"
         />
 
         <Text style={styles.label}>
@@ -176,7 +157,7 @@ export default function PaisGanadorEdit() {
           value={numCampeonatos}
           onChangeText={setNumCampeonatos}
           keyboardType="numeric"
-          placeholder="5"
+          placeholder="Ejemplo: 2"
         />
 
         <Text style={styles.label}>
@@ -199,7 +180,7 @@ export default function PaisGanadorEdit() {
           value={aniosPais}
           onChangeText={setAniosPais}
           multiline
-          placeholder="1958, 1962, 1970..."
+          placeholder="2026,..."
         />
 
         {error && (
