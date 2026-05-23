@@ -1,4 +1,5 @@
 // components/customButton.tsx
+<<<<<<< HEAD
 
 /***************************************************************
  * Nombre: customButton.tsx
@@ -18,6 +19,11 @@
 import React from 'react';
 import { ActivityIndicator, StyleSheet, Text, TouchableOpacity, ViewStyle } from 'react-native';
 import { COLORS, FONTS, RADIUS } from '../styles/globalStyles';
+=======
+import React from 'react';
+import { TouchableOpacity, Text, ActivityIndicator, StyleSheet, ViewStyle } from 'react-native';
+import { COLORS, RADIUS, FONTS } from '../styles/globalStyles';
+>>>>>>> 4457da13d24af4786422fe8fd6d9c285d5c089cf
 
 type Variant = 'primary' | 'secondary' | 'danger' | 'ghost';
 

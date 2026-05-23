@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /***************************************************************
  * Nombre: usePaisGanador.ts
  *
@@ -11,6 +12,8 @@
  * Fecha: 17/05/2026
  ***************************************************************/
 
+=======
+>>>>>>> 4457da13d24af4786422fe8fd6d9c285d5c089cf
 import { paisGanadorEntity } from "@/domain/data/entity/paisGanador";
 import { db } from "@/domain/data/local/connection";
 import { PaisGanadorRepositoyImpl } from "@/domain/data/repository/paisGanadorRepositoryImpl";

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /***************************************************************
  * Nombre: loadingView.tsx
  *
@@ -12,6 +13,8 @@
  * Fecha: 17/05/2026
  ***************************************************************/
 
+=======
+>>>>>>> 4457da13d24af4786422fe8fd6d9c285d5c089cf
 import React from 'react';
 import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 import { COLORS, FONTS } from '../styles/globalStyles';

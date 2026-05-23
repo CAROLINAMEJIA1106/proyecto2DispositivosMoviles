@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /***************************************************************
  * Nombre: integranteForm.tsx
  *
@@ -12,6 +13,8 @@
  * Fecha: 17/05/2026
  ***************************************************************/
 
+=======
+>>>>>>> 4457da13d24af4786422fe8fd6d9c285d5c089cf
 import React, { useState } from 'react';
 import { Alert, StyleSheet, Text, TextInput, View } from 'react-native';
 import { CreateIntegranteModel } from '../domain/model/integranteModel';

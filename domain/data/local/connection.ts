@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /***************************************************************
  * Nombre: connection.ts
  *
@@ -13,6 +14,8 @@
  ***************************************************************/
 
 
+=======
+>>>>>>> 4457da13d24af4786422fe8fd6d9c285d5c089cf
 import { Asset } from 'expo-asset';
 import { Directory, File, Paths } from 'expo-file-system';
 import { openDatabaseSync, SQLiteDatabase } from 'expo-sqlite';

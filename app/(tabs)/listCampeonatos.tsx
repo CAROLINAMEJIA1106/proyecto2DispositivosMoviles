@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /***************************************************************
  * Nombre: listCampeonatos.tsx
  *
@@ -12,6 +13,8 @@
  * Fecha: 17/05/2026
  ***************************************************************/
 
+=======
+>>>>>>> 4457da13d24af4786422fe8fd6d9c285d5c089cf
 import {
   FlatList,
   Image,
@@ -27,7 +30,11 @@ import {
   useLocalSearchParams,
   useRouter
 } from "expo-router";
+<<<<<<< HEAD
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+=======
+
+>>>>>>> 4457da13d24af4786422fe8fd6d9c285d5c089cf
 import { EmptyState } from "../../components/emptyState";
 import { LoadingView } from "../../components/loadingView";
 
@@ -44,7 +51,11 @@ import {
 export default function ListCampeonatos() {
 
   const router = useRouter();
+<<<<<<< HEAD
   const insets = useSafeAreaInsets();
+=======
+
+>>>>>>> 4457da13d24af4786422fe8fd6d9c285d5c089cf
   const {
     paisGanadorId,
     nombrePais
@@ -83,7 +94,11 @@ export default function ListCampeonatos() {
 
     <View style={globalStyles.screen}>
 
+<<<<<<< HEAD
       <View style={[styles.header, { paddingTop: insets.top + SPACING.md }]}>
+=======
+      <View style={styles.header}>
+>>>>>>> 4457da13d24af4786422fe8fd6d9c285d5c089cf
 
         <View style={styles.headerTop}>
 
@@ -277,12 +292,18 @@ export default function ListCampeonatos() {
         style={styles.fab}
         activeOpacity={0.85}
         onPress={() =>
+<<<<<<< HEAD
           router.push({
             pathname:"/editCampeonato",
             params:{
               paId: paisGanadorId
             }
           })
+=======
+          router.push(
+            "/editCampeonato"
+          )
+>>>>>>> 4457da13d24af4786422fe8fd6d9c285d5c089cf
         }
       >
 

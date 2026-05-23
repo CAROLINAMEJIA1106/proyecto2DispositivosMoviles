@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /***************************************************************
  * Nombre: paisGanadorList.tsx
  *
@@ -11,6 +12,8 @@
  * Fecha: 17/05/2026
  ***************************************************************/
 
+=======
+>>>>>>> 4457da13d24af4786422fe8fd6d9c285d5c089cf
 import { EmptyState } from "@/components/emptyState";
 import { LoadingView } from "@/components/loadingView";
 import { usePaisGanador } from "@/domain/presentation/hook/usePaisGanador";
@@ -202,11 +205,15 @@ export default function PaisGanadorList() {
                     router.push({
                       pathname: "/paisGanadorEdit",
                       params: {
+<<<<<<< HEAD
                         id: item.pa_id,
                         nombre: item.pa_nombre,          
                         num_campeonatos: item.pa_num_campeon,
                         bandera: item.pa_bandera,
                         anios: item.pa_anios
+=======
+                        id: item.pa_id
+>>>>>>> 4457da13d24af4786422fe8fd6d9c285d5c089cf
                       }
                     });
 
