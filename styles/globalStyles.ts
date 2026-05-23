@@ -1,3 +1,13 @@
+/***************************************************************
+ * Nombre: GlobalStyles.ts
+ *
+ * Descripción:
+ * Estilos globales para la aplicación.
+ *
+ * Autor: Grupo 3
+ *
+ * Fecha: 05/2026
+ ***************************************************************/
 import { StyleSheet } from 'react-native';
 
 export const COLORS = {

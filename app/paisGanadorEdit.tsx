@@ -1,3 +1,15 @@
+/***************************************************************
+ * Nombre: PaisGanadorEdit.tsx
+ *
+ * Descripción:
+ * Pantalla encargada de crear y actualizar el pais ganador del mundial.
+ * Permite ingresar el nombre del país, número de campeonatos ganados,
+ * URL de la bandera y los años en que ganó.
+ *
+ * Autor: Grupo 3
+ *
+ * Fecha: 05/2026
+ ***************************************************************/
 import {
   useLocalSearchParams,
   useRouter

@@ -1,6 +1,3 @@
-// components/customButton.tsx
-
-
 /***************************************************************
  * Nombre: customButton.tsx
  *
@@ -14,8 +11,6 @@
  *
  * Fecha: 17/05/2026
  ***************************************************************/
-
-
 
 import React from 'react';
 import { ActivityIndicator, StyleSheet, Text, TouchableOpacity, ViewStyle } from 'react-native';
