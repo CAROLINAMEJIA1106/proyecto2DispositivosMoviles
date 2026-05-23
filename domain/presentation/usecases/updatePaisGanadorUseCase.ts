@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 /***************************************************************
  * Nombre: updatePaisGanadorUseCase.ts
  *
@@ -12,8 +12,7 @@
  * Fecha: 17/05/2026
  ***************************************************************/
 
-=======
->>>>>>> 4457da13d24af4786422fe8fd6d9c285d5c089cf
+
 import { paisGanadorEntity } from "@/domain/data/entity/paisGanador";
 import { PaisGanadorRepositoy } from "@/domain/data/repository/paisGanadorRepository";
 

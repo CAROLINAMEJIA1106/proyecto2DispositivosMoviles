@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 /***************************************************************
  * Nombre: usePaisGanador.ts
  *
@@ -18,14 +18,6 @@ import {
   useEffect,
   useMemo,
   useState
-=======
-import { useFocusEffect } from "expo-router";
-import {
-    useCallback,
-    useEffect,
-    useMemo,
-    useState
->>>>>>> 4457da13d24af4786422fe8fd6d9c285d5c089cf
 } from "react";
 
 import { db } from "@/domain/data/local/connection";

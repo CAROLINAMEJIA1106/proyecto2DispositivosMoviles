@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 /***************************************************************
  * Nombre: getCampeonatosUseCase.ts
  *
@@ -13,8 +13,7 @@
  * Fecha: 17/05/2026
  ***************************************************************/
 
-=======
->>>>>>> 4457da13d24af4786422fe8fd6d9c285d5c089cf
+
 import { CampeonatoMapper } from "@/domain/data/mapper/campeonatoMapper";
 import { CampeonatoModel } from "@/domain/model/campeonatoModel";
 
